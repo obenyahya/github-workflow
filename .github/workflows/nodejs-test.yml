@@ -2,8 +2,6 @@ name: NodeJs test workflow
 
 on:
   workflow_call:
-  pull_request:
-    branches: [main]
 
 jobs:
   test:

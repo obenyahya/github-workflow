@@ -2,11 +2,6 @@ name: NodeJs publish workflow
 
 on:
   workflow_call:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-    types: [closed]
 
 jobs:
   versioning:
