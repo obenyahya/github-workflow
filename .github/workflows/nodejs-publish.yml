@@ -32,6 +32,14 @@ jobs:
         run: |
           CI= npm run build:ci
 
+      - name: Switch to main branch
+        run: |
+          git config --global user.email "GITHUB CI"
+          git config --global user.name "GITHUB CI"
+          git config --global pull.rebase true
+          git fetch
+          git checkout main
+
       - name: Publish package
         run: |
           npm publish --ignore-scripts
