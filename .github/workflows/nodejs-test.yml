@@ -35,11 +35,11 @@ jobs:
 
       - name: Run unit tests
         run: |
-          npm test
+          npm run test:ci
 
       - name: Test app building
         run: |
-          npm run build
+          npm run build:ci
 
   coverage:
     runs-on: ubuntu-latest
@@ -51,4 +51,4 @@ jobs:
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
           annotations: none
-          test-script: npm test
+          test-script: npm run test:ci
