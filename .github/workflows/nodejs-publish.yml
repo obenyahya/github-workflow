@@ -24,14 +24,6 @@ jobs:
           registry-url: https://npm.pkg.github.com
           cache: "npm"
 
-      - name: Install NPM dependencies
-        run: |
-          npm ci
-
-      - name: Build package
-        run: |
-          CI= npm run build:ci
-
       - name: Switch to main branch
         run: |
           git config --global user.email "GITHUB CI"
@@ -39,6 +31,15 @@ jobs:
           git config --global pull.rebase true
           git fetch
           git checkout main
+          git pull origin main
+
+      - name: Install NPM dependencies
+        run: |
+          npm ci
+
+      - name: Build package
+        run: |
+          CI= npm run build:ci
 
       - name: Publish package
         run: |
