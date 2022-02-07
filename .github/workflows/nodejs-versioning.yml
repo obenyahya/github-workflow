@@ -2,6 +2,16 @@ name: NodeJs versioning workflow
 
 on:
   workflow_call:
+    inputs:
+      ownerName:
+        required: true
+        type: string
+      reporName:
+        required: true
+        type: string
+    secrets:
+      repoAccessToken:
+        required: true
 
 jobs:
   versioning:
@@ -61,8 +71,8 @@ jobs:
         run: |
           curl \
             -i \
-            -u obenyahya:${{secrets.REPO_WRITE}} \
+            -u obenyahya:${{secrets.repoAccessToken}} \
             -X POST \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/obenyahya/design-system/merges \
+            https://api.github.com/repos/${{inputs.ownerName}}/${{inputs.repoName}}/merges \
             -d '{"base":"main","head":"ci-bot-branche"}'
