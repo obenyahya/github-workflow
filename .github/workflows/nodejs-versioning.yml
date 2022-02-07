@@ -6,7 +6,7 @@ on:
       ownerName:
         required: true
         type: string
-      reporName:
+      repoName:
         required: true
         type: string
     secrets:
