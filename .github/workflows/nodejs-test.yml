@@ -57,3 +57,5 @@ jobs:
         with:
           annotations: none
           test-script: npm run test:ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmPkgToken }}
