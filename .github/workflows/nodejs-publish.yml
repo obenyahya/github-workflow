@@ -5,6 +5,8 @@ on:
     secrets:
       publishToken:
         required: true
+      npmPkgToken:
+        required: false
 
 jobs:
   publish:
@@ -36,6 +38,8 @@ jobs:
       - name: Install NPM dependencies
         run: |
           npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmPkgToken }}
 
       - name: Build package
         run: |
