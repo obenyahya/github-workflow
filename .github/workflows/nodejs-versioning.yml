@@ -12,6 +12,8 @@ on:
     secrets:
       repoAccessToken:
         required: true
+      npmPkgToken:
+        required: false
 
 jobs:
   versioning:
@@ -29,6 +31,8 @@ jobs:
       - name: Install NPM dependencies
         run: |
           npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmPkgToken }}
 
       - name: Get branche name
         uses: EthanSK/git-branch-name-action@v1
